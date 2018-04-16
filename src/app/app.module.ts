@@ -11,17 +11,33 @@ import { HomePage } from '../pages/home/home';
 import { LoginPage } from '../pages/login/login';
 import { RegisterPage } from '../pages/register/register';
 
+import { AngularFireModule } from 'angularfire2';
+import { AngularFireDatabaseModule, AngularFireDatabase } from 'angularfire2/database';
+import { AngularFireAuthModule } from 'angularfire2/auth';
+
+ export const firebaseConfig = {
+    apiKey: "AIzaSyAb6XSxbGTC6_VW_ix2_0HouGFjnx7xwAg",
+    authDomain: "ionic-full-app.firebaseapp.com",
+    databaseURL: "https://ionic-full-app.firebaseio.com",
+    projectId: "ionic-full-app",
+    storageBucket: "ionic-full-app.appspot.com",
+    messagingSenderId: "222303314366"
+  }
 
 @NgModule({
   declarations: [
     MyApp,
     HomePage,
     LoginPage,
-    RegisterPage
+    RegisterPage,
+
   ],
   imports: [
     BrowserModule,
-    IonicModule.forRoot(MyApp)
+    IonicModule.forRoot(MyApp),
+    AngularFireModule.initializeApp(firebaseConfig),
+    AngularFireDatabaseModule,
+    AngularFireAuthModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
