@@ -1,6 +1,11 @@
 import { Component, ViewChild } from '@angular/core';
 import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
 
+//imported
+import { AngularFireAuth } from 'angularfire2/auth';
+import { DashboardPage } from '../dashboard/dashboard';
+
+
 @IonicPage()
 @Component({
   selector: 'page-login',
@@ -8,14 +13,14 @@ import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angu
 })
 export class LoginPage {
 
-
-  @ViewChild('username') username;
+  @ViewChild('email') email;
   @ViewChild('password') password;
 
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
-    public alertCtrl: AlertController) {
+    public alertCtrl: AlertController,
+    private _db: AngularFireAuth) {
   }
 
   ionViewDidLoad() {
@@ -23,12 +28,23 @@ export class LoginPage {
   }
 
   loggedIn() {
-    let alert = this.alertCtrl.create({
-      title: 'Welcome successful!',
-      subTitle: 'You are logged in as : ' + this.username.value + " & " + this.password.value,
-      buttons: ['OK']
-    });
-    alert.present();
+    this._db.auth
+      .signInWithEmailAndPassword(this.email.value, this.password.value)
+      .then(data => {
+        this.alert('Logged in successefuly');
+        this.navCtrl.setRoot(DashboardPage);
+      })
+      .catch(error => {
+        this.alert('Error : '+ error);
+      });
   }
+
+  alert($message) {
+      this.alertCtrl.create({
+            title: 'Info!',
+        subTitle: $message,
+            buttons: ['OK']
+          }).present();
+    }
 
 }

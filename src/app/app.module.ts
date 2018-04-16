@@ -10,6 +10,7 @@ import { HomePage } from '../pages/home/home';
 //imported
 import { LoginPage } from '../pages/login/login';
 import { RegisterPage } from '../pages/register/register';
+import { DashboardPage } from '../pages/dashboard/dashboard';
 
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule, AngularFireDatabase } from 'angularfire2/database';
@@ -30,6 +31,7 @@ import { AngularFireAuthModule } from 'angularfire2/auth';
     HomePage,
     LoginPage,
     RegisterPage,
+    DashboardPage
 
   ],
   imports: [
@@ -44,7 +46,8 @@ import { AngularFireAuthModule } from 'angularfire2/auth';
     MyApp,
     HomePage,
     LoginPage,
-    RegisterPage
+    RegisterPage,
+    DashboardPage
   ],
   providers: [
     StatusBar,
