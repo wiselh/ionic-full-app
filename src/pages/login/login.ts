@@ -6,7 +6,7 @@ import { AngularFireAuth } from 'angularfire2/auth';
 import { DashboardPage } from '../dashboard/dashboard';
 
 
-@IonicPage()
+// @IonicPage()
 @Component({
   selector: 'page-login',
   templateUrl: 'login.html',
@@ -28,15 +28,17 @@ export class LoginPage {
   }
 
   loggedIn() {
-    this._db.auth
-      .signInWithEmailAndPassword(this.email.value, this.password.value)
-      .then(data => {
-        this.alert('Logged in successefuly');
-        this.navCtrl.setRoot(DashboardPage);
-      })
-      .catch(error => {
-        this.alert('Error : '+ error);
-      });
+    this.navCtrl.setRoot(DashboardPage);
+
+    // this._db.auth
+    //   .signInWithEmailAndPassword(this.email.value, this.password.value)
+    //   .then(data => {
+    //     this.alert('Logged in successefuly');
+    //     this.navCtrl.setRoot(DashboardPage);
+    //   })
+    //   .catch(error => {
+    //     this.alert('Error : '+ error);
+    //   });
   }
 
   alert($message) {
