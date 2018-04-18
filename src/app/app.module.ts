@@ -13,7 +13,7 @@ import { RegisterPage } from '../pages/register/register';
 import { DashboardPage } from '../pages/dashboard/dashboard';
 
 import { AngularFireModule } from 'angularfire2';
-import { AngularFireDatabaseModule, AngularFireDatabase  } from 'angularfire2/database';
+import { AngularFireDatabaseModule  } from 'angularfire2/database';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 
 //Admob
