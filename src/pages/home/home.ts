@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { NavController, Platform } from 'ionic-angular';
 
 //imported
 import { LoginPage } from '../login/login';
@@ -9,8 +9,13 @@ import { DashboardPage } from './../dashboard/dashboard';
 import { AngularFireAuth } from 'angularfire2/auth';
 // import { firebase } from 'firebase';
 import * as firebase from 'firebase/app';
+import { AdMobFree, AdMobFreeBannerConfig } from '@ionic-native/admob-free';
 
-
+const bannerConfig: AdMobFreeBannerConfig = {
+    // id: 'ca-app-pub-2630608963246770/6012945756',
+    isTesting: true,
+    autoShow: true
+    };
 
 @Component({
   selector: 'page-home',
@@ -19,8 +24,20 @@ import * as firebase from 'firebase/app';
 export class HomePage {
   constructor(
     public navCtrl: NavController,
-    private fire_auth: AngularFireAuth
-  ) {}
+    private fire_auth: AngularFireAuth,
+    private admob: AdMobFree,
+  private platform: Platform) {}
+
+  ionViewDidLoad(){
+    if(this.platform.is('cordova')) {
+
+      this.admob.banner.config(bannerConfig);
+      this.admob.banner
+        .prepare()
+        .then(() => {})
+        .catch(e => console.log(e));
+    }
+  }
 
   signIn() {
     this.navCtrl.push(LoginPage);
@@ -39,7 +56,6 @@ export class HomePage {
   }
 
   logoutOfFacebook() {
-     this.fire_auth.auth.signOut();
+    this.fire_auth.auth.signOut();
   }
-
 }

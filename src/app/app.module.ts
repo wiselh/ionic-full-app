@@ -16,6 +16,10 @@ import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule, AngularFireDatabase  } from 'angularfire2/database';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 
+//Admob
+import { AdMobFree } from '@ionic-native/admob-free';
+
+
  export const firebaseConfig = {
     apiKey: "AIzaSyAb6XSxbGTC6_VW_ix2_0HouGFjnx7xwAg",
     authDomain: "ionic-full-app.firebaseapp.com",
@@ -53,6 +57,7 @@ import { AngularFireAuthModule } from 'angularfire2/auth';
   providers: [
     StatusBar,
     SplashScreen,
+    AdMobFree,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })
