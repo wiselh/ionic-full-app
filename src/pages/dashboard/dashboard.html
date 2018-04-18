@@ -1,7 +1,7 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>Dashboard</ion-title>
+    <ion-title>Chat</ion-title>
   </ion-navbar>
 
 </ion-header>
@@ -10,16 +10,17 @@
 <ion-content padding>
   <div id="chatMessages">
     <ion-list>
-      <ion-item *ngFor="let message of messages">
-        <h2> {{ message.email }}</h2>
-        <p> {{ message.message }}</p>
+      <ion-item *ngFor="let message of messages" [class]="message.socialMessage ? 'special' : '' ">
+        <div [class]="message.email != email ? 'messageLeft' : 'messageRight' ">
+          <h2> {{ message.email }}</h2>
+          <p> {{ message.message }}</p>
+        </div>
       </ion-item>
     </ion-list>
   </div>
 </ion-content>
 
 <ion-footer>
-  <ion-toolbar>
     <ion-grid>
       <ion-row>
         <ion-col col-10>
@@ -32,5 +33,4 @@
         </ion-col>
       </ion-row>
     </ion-grid>
-  </ion-toolbar>
 </ion-footer>

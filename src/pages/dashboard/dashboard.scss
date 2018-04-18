@@ -1,3 +1,31 @@
 page-dashboard {
+  .messageLeft {
+    float: left;
+  }
+  .messageRight {
+    float: right;
+  }
+  .messageRight h2 , .messageLeft h2{
+    color:teal;
+    font-size: 90%;
 
+  }
+  .messageRight p {
+    color: black;
+    background: #63eded;
+    padding: 12px 5px;
+    border-radius: 7px;
+    top: 0;
+    position: relative;
+    font-family: arial;
+  }
+  .messageLeft p {
+    color: black;
+    background: #d3ccde;
+    padding: 12px 5px;
+    border-radius: 7px;
+    top: 0;
+    position: relative;
+    font-family: arial;
+  }
 }
